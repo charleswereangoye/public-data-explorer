@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Public Data Explorer</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Public Data Explorer</h1>
+    </header>
+    <main>
+        <section id="controls">
+            <input id="search" placeholder="Search country (e.g. Kenya)" />
+            <select id="indicator">
+                <option value="SP.POP.TOTL">Population</option>
+                <option value="NY.GDP.PCAP.CD">GDP per capita</option>
+                <option value="SP.DYN.LE00.IN">Life expectancy</option>
+            </select>
+            <button id="searchBtn">Search</button>
+        </section>
+
+        <section id="results">
+            <h2 id="countryName">—</h2>
+            <canvas id="chart" width="600" height="300"></canvas>
+            <div id="error" style="color:red"></div>
+        </section>
+    </main>
+    <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+/* Reset some default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f6f8;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+main {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+#controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+#controls input,
+#controls select,
+#controls button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+#controls input:focus,
+#controls select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+#controls button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+#controls button:hover {
+    background-color: #0056b3;
+}
+
+#results {
+    text-align: center;
+}
+
+#results h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+#chart {
+    max-width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#error {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    #controls {
+        flex-direction: column;
+    }
+
+    #controls input,
+    #controls select,
+    #controls button {
+        width: 100%;
+    }
+}
