@@ -1,10 +1,10 @@
 const express = require('express');
 const NodeCache = require('node-cache');
 const path = require('path');
+const http = require('http');
 
 const app = express();
 const cache = new NodeCache({ stdTTL: 3600 }); // 1 hour cache
-const PORT = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, '..', 'frontend')));
 
@@ -42,5 +42,10 @@ app.get('/api/indicator/:code/:country', async (req, res) => {
     }
 });
 
-app.listen(PORT, () => console.log(`Backend listening on port ${PORT}`));
+http.createServer(app).listen(3000, () => {
+    console.log("Server 1 running on port 3000");
+});
 
+http.createServer(app).listen(3001, () => {
+    console.log("Server 2 running on port 3001");
+});
