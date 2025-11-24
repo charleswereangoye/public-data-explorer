@@ -79,6 +79,7 @@ Inside the backend folder:
 ```
 cd backend
 npm install
+npm start
 ```
 
 ### Start Server 1 (Port 3000)
