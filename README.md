@@ -8,39 +8,40 @@ The backend is built using Node.js, and it fetches and caches external API data.
 
 1. Fetch Real-World Data from External API
 
-   * Uses World Bank API (no key required).
-   * Fetches country lists and specific indicator data.
-   * Caches data to improve performance and reduce API calls.
+   - Uses World Bank API (no key required).
+   - Fetches country lists and specific indicator data.
+   - Caches data to improve performance and reduce API calls.
 
 2. Two Deployed Backend Servers
 
-   * Backend runs on:
+   - Backend runs on:
 
-     * Server 1 → Port 3000
-     * Server 2 → Port 3001
-   * Both serve the same frontend and API routes.
+     - Server 1 → Port 3000
+     - Server 2 → Port 3001
+
+   - Both serve the same frontend and API routes.
 
 3. Load Balancer (Node.js Reverse Proxy)
 
-   * Located at the root of the project (lb.js)
-   * Distributes traffic across the two backend servers.
-   * Runs on port 4000
-   * Allows verification using "Request served by PORT" logs.
+   - Located at the root of the project (lb.js)
+   - Distributes traffic across the two backend servers.
+   - Runs on port 4000
+   - Allows verification using "Request served by PORT" logs.
 
 4. User Interaction
 
-   * Users can search countries, select an indicator, and display historical data from 2014–2024.
+   - Users can search countries, select an indicator, and display historical data from 2014–2024.
 
 5. Error Handling
 
-   * Detects API downtime, invalid API responses, and failed requests.
-   * Provides user-friendly messages.
+   - Detects API downtime, invalid API responses, and failed requests.
+   - Provides user-friendly messages.
 
 6. Simple HTML/CSS/JS Frontend
 
-   * Clean user interface
-   * Beginner-friendly
-   * Easy to extend
+   - Clean user interface
+   - Beginner-friendly
+   - Easy to extend
 
 ## Project Structure
 
@@ -129,17 +130,62 @@ Request served by PORT 3001
 
 ## Usage (Frontend)
 
-Open:
+Start all backend servers first:
 
-```
-frontend/index.html
-```
+Server 1 → Port 3000
 
-The frontend sends all API requests to:
+Server 2 → Port 3001
 
-```
+Start the load balancer:
+
+node lb.js
+
+Load balancer runs on port 4000.
+
+All frontend requests will be routed through this port to distribute traffic across the backend servers.
+
+Open the frontend in your browser on port 80:
+
+Ensure both backend servers and the load balancer are running before opening the frontend.
+
+Simply open index.html in your browser (or access it via your local server on port 80 if you have one).
+
+Using the frontend interface:
+
+The frontend sends all API requests to the load balancer at:
+
 http://localhost:4000/api/...
-```
+
+Fetch the list of countries:
+
+Navigate to the countries section in the frontend.
+
+The frontend calls:
+
+http://localhost:4000/api/countries
+
+The list of countries will be displayed.
+
+Fetch specific indicator data:
+
+Select a country and enter an indicator code in the frontend interface.
+
+The frontend calls:
+
+http://localhost:4000/api/indicator/:code/:country
+
+Example: GDP per capita for Kenya:
+
+http://localhost:4000/api/indicator/NY.GDP.PCAP.CD/KEN
+
+The data will be displayed on the page.
+
+Verify load balancing:
+
+Check the backend server terminals; requests should alternate between ports 3000 and 3001:
+
+Request served by PORT 3000
+Request served by PORT 3001
 
 ## API Documentation
 
@@ -160,10 +206,10 @@ Example:
 
 The backend detects and handles:
 
-* API downtime
-* Invalid API responses
-* Network errors
-* Invalid routes
+- API downtime
+- Invalid API responses
+- Network errors
+- Invalid routes
 
 User messages:
 
